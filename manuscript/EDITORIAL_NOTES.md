@@ -104,8 +104,43 @@ Usuário pediu avaliação crítica de onde o paper podia virar contribuição d
 
 Estado final: 155 parágrafos, 5 tabelas, 9 imagens.
 
+## Repositório público criado (2026-09-06)
+
+Usuário pediu repositório git novo ("msl_2026") só com os arquivos desta última versão do manuscrito — nada das pastas antigas (`MSL/2023/`, `MSL/2026/MSLRAD BIBLIOS/` etc.). `gh` CLI não estava instalado no ambiente; baixado o binário portátil (zip da release oficial `cli/cli`, o instalador MSI falhou por exigir admin) e extraído para `%LOCALAPPDATA%\GitHubCLI`, adicionado ao PATH do usuário. Autenticado via device-code flow (usuário completou manualmente).
+
+Duas decisões confirmadas com o usuário antes de commitar:
+- **`paper/biblios/` (38MB de PDFs com copyright) excluído** do repo — risco de redistribuição mesmo em repo privado.
+- **Sem rodapé "Co-Authored-By: Claude"** nos commits — usuário confirmou que a preferência histórica (nunca incluir) vale também aqui, apesar da configuração desta sessão pedir o contrário.
+
+Repositório: **https://github.com/cesarrlamaral/msl_2026** (privado). Estrutura: `manuscript/` (docx + EDITORIAL_NOTES.md + figuras/) e `code/` (scripts 01-12 + rad_extract_lib.py/rems_extract_lib.py + `code/data/` com os datasets derivados pequenos — série mestre por sol, contagem do Oulu, CSVs de resumo). Excluídos do repo: PDFs de bibliografia, exports brutos por observação (extended_series/, pressure_series/, decomposition_annual_period.csv — muito grandes, a série mestre já agrega o essencial), logs e `__pycache__`. O Data and Code Availability Statement do paper foi atualizado do texto genérico "disponível mediante solicitação" pra apontar direto pro link real do repositório.
+
+## Formatação completa para submissão ao JGR: Planets / AGU (2026-09-06)
+
+Usuário pediu formatação completa (texto, figuras, tabelas, referências, autoria) seguindo as normas da AGU (editora do JGR: Planets). Pesquisa feita direto no site da AGU (agu.org bloqueava fetch automatizado por proteção anti-bot — contornado usando o navegador Claude-in-Chrome) nas páginas oficiais "Grammar and Style Guide" e "Text & Graphics Requirements".
+
+**Mudanças aplicadas:**
+- **Autoria/afiliação**: autores com sobrescrito numérico (Cesar Amaral¹,*, Dafne Adriana Abreu dos Anjos¹, Anna Luisa dos Santos Donato¹, Leticia Bastos Eller¹), afiliação completa da UERJ, linha de autor correspondente com e-mail.
+- **Key Points**: 3 pontos, todos ≤140 caracteres (obrigatório AGU).
+- **Abstract**: cortado de 420 para 249 palavras (limite AGU é <250), citações removidas (regra AGU: evitar citação no abstract a menos que essencial).
+- **Plain Language Summary**: novo, obrigatório pro JGR:Planets especificamente, 200 palavras, sem jargão/siglas.
+- **Keywords**: 6 palavras-chave livres adicionadas.
+- **Tables e Figures movidas pro final do documento** (depois de References), ordem exigida pela AGU: Text → Acknowledgements → Open Research → References → Tables → Figures. As citações no corpo do texto ("Table 3", "Figure 5, trend panel") continuam intactas.
+- **Conflict of Interest** (declaração padrão) e **Acknowledgments** (com placeholder pro usuário preencher financiamento) adicionados na ordem certa.
+- **"Data and Code Availability" renomeada pra "Open Research"** (nome exigido pela AGU) e conectada a citações formais na lista de Referências (regra AGU: dado/código citado no texto precisa ter entrada na lista de Referências).
+- **Referências**: todas as 28 entradas reordenadas alfabeticamente por primeiro autor (regra letra-por-letra da AGU), DOIs convertidos de `doi:10.xxxx` pra `https://doi.org/10.xxxx` (formato exigido), autores de 8+ truncados pra 6+"et al." (Ehresmann et al. 2014 tinha 14 autores — busquei a lista completa no PDF original em `paper/biblios/` pra truncar corretamente; Guo et al. 2021 tinha 10), títulos convertidos pra sentence case, nome de periódico+volume em itálico. Adicionadas 4 referências novas de dado/software (NASA PDS RAD, NASA PDS REMS, SILSO dataset, código no GitHub) exigidas pela seção Open Research.
+- **Espaçamento duplo** (regra AGU) aplicado no estilo Normal + numeração contínua de linha (`w:lnNumType`) na seção do documento — ambos exigidos pela submissão.
+
+**Bug corrigido no meio do caminho**: minhas primeiras tentativas de mover Tables/Figures pro final usaram `body.append()` bruto, que colocou o conteúdo DEPOIS do elemento `w:sectPr` (que precisa ser sempre o último filho do body) — documento tecnicamente inválido. Corrigido reconstruindo com `sectPr.addprevious()`.
+
+**Pendências que só o usuário pode resolver** (documentadas na seção "Ainda em aberto" abaixo).
+
 ## Ainda em aberto
 
+- **ORCID do autor correspondente**: AGU exige registro de ORCID vinculado à conta de submissão. Não posso criar isso por você — precisa se registrar em orcid.org e conectar no sistema de submissão da AGU (GEMS).
+- **Financiamento (Acknowledgments)**: deixei um placeholder `[FUNDING INFORMATION TO BE ADDED BY THE AUTHORS]` — preencher com as fontes reais de financiamento (ou declarar explicitamente que não houve financiamento dedicado) antes de submeter.
+- **Conflito de interesse**: usei a declaração padrão "no conflicts of interest" — confirmar que é verdade pra todos os 4 autores antes de submeter.
+- **Equação da dose (Seção 2.2) ainda é uma imagem**, não um objeto de equação nativo do Word — a AGU pede "Do not use graphics for equations". A equação tem soma dupla + integral dupla, então não tentei reconstruir via XML bruto (risco de corromper o arquivo sem conseguir validar visualmente); mais seguro reconstruir direto no Editor de Equações do Word.
+- **Depósito em repositório "confiável"**: a seção Open Research aponta pro GitHub, mas a própria AGU pede depósito em "repositório confiável" com DOI persistente (GitHub sozinho não garante isso). Recomendo arquivar uma versão do `msl_2026` no Zenodo (gera DOI automático, é gratuito, e sincroniza com GitHub) antes de submeter.
 - **Comparação quantitativa com o campo magnético terrestre.** O rascunho original tinha um "XX%" não preenchido comparando o campo de Marte com o da Terra (Discussion). Removido do corpo do texto por não fazer sentido como placeholder numa versão "pronta", mas o ponto de fundo é real: Marte não tem campo global comparável (só magnetismo remanescente crustal localizado, ex. Terra Cimmeria ~1600 nT, contra ~25-65 µT do campo superficial terrestre) — uma comparação percentual direta não é fisicamente bem definida do jeito que estava formulada. Se quiser esse dado no texto, precisa ser reformulado como comparação crustal-vs-global, não uma razão simples.
 - **6 referências reais disponíveis em `paper/biblios/` mas não citadas no texto atual** — candidatas a incorporar se expandir Métodos/Discussion: Zeitlin et al. (2016, calibração do RAD — candidata natural pra 2.1 RAD Instrument), Matthiä & Berger (2017, GEANT4/PLANETOCOSMICS), Matthiä et al. (workshop de modelos, LSSR), Kim et al. (comparação Badhwar-O'Neill/HZETRN), Gronoff, Norman & Mertens (2015, HZETRN vs. Planetocosmics), Ratliff, Smith & Heilbronn (simulação MCNP6).
 
