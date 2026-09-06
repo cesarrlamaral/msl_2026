@@ -1,0 +1,46 @@
+{
+  "title": "MSL/RAD Dose-Rate Reanalysis: Code and Data (msl_2026)",
+  "description": "<p>Reproducible analysis pipeline for a 13.5-year (SOL 00001-04843) reanalysis of Mars Science Laboratory (MSL) Curiosity rover RAD dose-rate data, supporting the manuscript \"Hysteresis in the Solar-Cycle Modulation of Martian Surface Radiation: 13.5 Years of MSL/RAD Observations Across a Full Cycle Reversal\" (submitted to Journal of Geophysical Research: Planets).</p><p>Includes: PDS3/PDS4 byte-offset extraction libraries for RAD and REMS data, SPE-robust classical decomposition, continuous wavelet transform, Newey-West (HAC) corrected regression against sunspot number and the Oulu neutron monitor, lag/hysteresis analysis, Lomb-Scargle periodogram, mission dose-equivalent estimation, and the derived summary datasets (CSV) produced by these scripts.</p>",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Amaral, Cesar",
+      "affiliation": "Núcleo de Genética Molecular Ambiental e Astrobiologia, Departamento de Biofísica e Biometria, Instituto de Biologia Roberto Alcantara Gomes, Universidade do Estado do Rio de Janeiro (UERJ)"
+    },
+    {
+      "name": "Abreu dos Anjos, Dafne Adriana",
+      "affiliation": "Núcleo de Genética Molecular Ambiental e Astrobiologia, Departamento de Biofísica e Biometria, Instituto de Biologia Roberto Alcantara Gomes, Universidade do Estado do Rio de Janeiro (UERJ)"
+    },
+    {
+      "name": "Santos Donato, Anna Luisa dos",
+      "affiliation": "Núcleo de Genética Molecular Ambiental e Astrobiologia, Departamento de Biofísica e Biometria, Instituto de Biologia Roberto Alcantara Gomes, Universidade do Estado do Rio de Janeiro (UERJ)"
+    },
+    {
+      "name": "Bastos Eller, Leticia",
+      "affiliation": "Núcleo de Genética Molecular Ambiental e Astrobiologia, Departamento de Biofísica e Biometria, Instituto de Biologia Roberto Alcantara Gomes, Universidade do Estado do Rio de Janeiro (UERJ)"
+    }
+  ],
+  "keywords": [
+    "Mars",
+    "galactic cosmic rays",
+    "solar cycle",
+    "radiation dose",
+    "hysteresis",
+    "human spaceflight",
+    "MSL",
+    "Curiosity",
+    "RAD",
+    "REMS"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/cesarrlamaral/msl_2026",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "communities": [],
+  "grants": []
+}
