@@ -1,0 +1,4 @@
+scenario,dose_rate_ugy_h,dose_eq_msv_day,surface_500d_msv,total_mission_msv,pct_of_600msv_limit
+"Near solar maximum (~SOL 50, 2012-13, as in Hassler et al. 2014)",8.782,0.643,321.4,983.4,163.9
+"Deep solar minimum (~SOL 2779, 2019-2020)",12.9,0.944,472.1,1134.1,189.0
+"Recent, near solar cycle 25 maximum (~SOL 4832, 2025-2026)",6.322,0.463,231.4,893.4,148.9
