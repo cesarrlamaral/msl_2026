@@ -26,11 +26,13 @@ Ações tomadas:
   porque a expressão regular inicial só capturava o primeiro número de cada trecho), e os nomes dos
   8 arquivos de imagem restantes (`Figure2_...png` → `Figure1_...png`, etc.), nos dois locais
   (`MSL/paper/figuras/` e `msl_2026/manuscript/figuras/`).
-- **Nota de rastreamento**: durante a sincronização com o repo, percebi que `Figure_Dose_Equation.png`
-  (o PNG antigo da equação, sem uso desde que virou objeto nativo do Word) tinha sumido do disco em
-  ambos os locais, sem eu ter mandado apagá-lo. Como não tinha certeza da causa, restaurei o arquivo
-  via `git checkout HEAD --` em vez de aceitar a exclusão silenciosamente.
-- Commit `7c4d7ea` no `msl_2026`, enviado ao GitHub.
+- **Nota de rastreamento (resolvida)**: durante a sincronização com o repo, percebi que
+  `Figure_Dose_Equation.png` tinha sumido do disco em ambos os locais, sem eu ter mandado apagá-lo.
+  Como não tinha certeza da causa, restaurei o arquivo via `git checkout HEAD --`. O usuário depois
+  confirmou que a exclusão foi feita por ele mesmo, manualmente, já que o arquivo ficou órfão quando
+  a equação da Seção 2.2 virou objeto nativo do Word (ver commit anterior). Removido de novo,
+  intencionalmente desta vez, no commit `926d6c5`.
+- Commits `7c4d7ea` e `926d6c5` no `msl_2026`, enviados ao GitHub.
 
 
 Pendências e decisões editoriais levantadas durante a reorganização, verificação de referências e refinamento científico (2026-09-05). Nada disto vive no corpo do manuscrito — é o lugar certo pra esse tipo de nota operacional (mesmo padrão do `CITATIONS_TO_VERIFY.md` do hydrovent_field).
