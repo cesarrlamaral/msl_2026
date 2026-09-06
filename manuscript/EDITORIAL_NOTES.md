@@ -1,5 +1,38 @@
 # Notas editoriais — paper_msl_2026.docx
 
+## Refinamento científico #4 (2026-09-06) — Figura 1 removida por direito autoral
+
+Usuário reportou que a JGR:Planets exige autorização do autor para usar a imagem da antiga Figure 1
+("Hourly Perturbations..."). Investigação confirmou: a legenda já dizia explicitamente "Reproduced
+from the pattern reported by Rafkin et al. (2014)", e a própria imagem tinha o rótulo original
+"Figure 5" e a legenda original do Rafkin et al. impressos nela — ou seja, era um recorte direto de
+uma figura publicada por terceiros, não algo gerado pelo nosso pipeline.
+
+Verifiquei se dava pra refazer com dados nossos: não dava sem trabalho novo significativo. Nosso
+pipeline de extração (`rad_extract_lib.py`) só pega o valor escalar de dose por observação
+(`TOT_DOSE_B/E`), nunca extraiu o horário/timestamp de cada observação dentro do sol — só temos
+médias diárias (`mslrad_master_sol_series.csv`, uma linha por sol). Recriar o padrão diurno exigiria
+extrair um campo novo (horário local) de milhares de arquivos brutos, uma extração nova e não-trivial.
+
+Avaliação de importância: a Seção 3.1 (Variação Diurna) descreve um fenômeno já bem estabelecido na
+literatura (não é achado original deste paper) — o argumento central do paper está nas Seções 3.3-3.7
+(ciclo solar de longo prazo). Decisão: **remover a figura** em vez de reconstruí-la, já que o esforço
+de nova extração não se justificava para uma figura de contexto/background.
+
+Ações tomadas:
+- Removida a imagem e a legenda da Figure 1 do `.docx` (e do arquivo `Figure1_Hourly_Perturbations_dose_neutral_pressure.png`, apagado de `paper/figuras/` e do repo `msl_2026`).
+- Renumeradas Figures 2-9 → 1-8 em todo o documento: legendas, todas as chamadas no texto (incluindo
+  casos com múltiplos números tipo "Figures 2-4" e "Figures 5 and 7", que exigiram correção manual
+  porque a expressão regular inicial só capturava o primeiro número de cada trecho), e os nomes dos
+  8 arquivos de imagem restantes (`Figure2_...png` → `Figure1_...png`, etc.), nos dois locais
+  (`MSL/paper/figuras/` e `msl_2026/manuscript/figuras/`).
+- **Nota de rastreamento**: durante a sincronização com o repo, percebi que `Figure_Dose_Equation.png`
+  (o PNG antigo da equação, sem uso desde que virou objeto nativo do Word) tinha sumido do disco em
+  ambos os locais, sem eu ter mandado apagá-lo. Como não tinha certeza da causa, restaurei o arquivo
+  via `git checkout HEAD --` em vez de aceitar a exclusão silenciosamente.
+- Commit `7c4d7ea` no `msl_2026`, enviado ao GitHub.
+
+
 Pendências e decisões editoriais levantadas durante a reorganização, verificação de referências e refinamento científico (2026-09-05). Nada disto vive no corpo do manuscrito — é o lugar certo pra esse tipo de nota operacional (mesmo padrão do `CITATIONS_TO_VERIFY.md` do hydrovent_field).
 
 ## Refinamento científico #2 (2026-09-05) — busca ampla na literatura
