@@ -1,0 +1,42 @@
+[
+  {
+    "person_or_org": {
+      "type": "personal",
+      "family_name": "Amaral",
+      "given_name": "Cesar"
+    },
+    "affiliations": [
+      { "name": "Universidade do Estado do Rio de Janeiro (UERJ), Núcleo de Genética Molecular Ambiental e Astrobiologia" }
+    ]
+  },
+  {
+    "person_or_org": {
+      "type": "personal",
+      "family_name": "Abreu dos Anjos",
+      "given_name": "Dafne Adriana"
+    },
+    "affiliations": [
+      { "name": "Universidade do Estado do Rio de Janeiro (UERJ), Núcleo de Genética Molecular Ambiental e Astrobiologia" }
+    ]
+  },
+  {
+    "person_or_org": {
+      "type": "personal",
+      "family_name": "Santos Donato",
+      "given_name": "Anna Luisa dos"
+    },
+    "affiliations": [
+      { "name": "Universidade do Estado do Rio de Janeiro (UERJ), Núcleo de Genética Molecular Ambiental e Astrobiologia" }
+    ]
+  },
+  {
+    "person_or_org": {
+      "type": "personal",
+      "family_name": "Bastos Eller",
+      "given_name": "Leticia"
+    },
+    "affiliations": [
+      { "name": "Universidade do Estado do Rio de Janeiro (UERJ), Núcleo de Genética Molecular Ambiental e Astrobiologia" }
+    ]
+  }
+]
