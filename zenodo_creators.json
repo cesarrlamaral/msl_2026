@@ -38,5 +38,13 @@
     "affiliations": [
       { "name": "Universidade do Estado do Rio de Janeiro (UERJ), Núcleo de Genética Molecular Ambiental e Astrobiologia" }
     ]
+  },
+  {
+    "person_or_org": {
+      "type": "personal",
+      "family_name": "Goldenberg-Barbosa",
+      "given_name": "Rodrigo",
+      "identifiers": [{ "scheme": "orcid", "identifier": "0000-0002-4072-8608" }]
+    }
   }
 ]
